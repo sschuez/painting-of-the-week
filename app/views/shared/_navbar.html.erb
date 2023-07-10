@@ -1,0 +1,16 @@
+<header class="navbar fixed-top" 
+        data-controller="sidebar navbar"
+        data-action="scroll@window->navbar#updateNavbar">
+  <div class="navbar__brand">
+    <%= link_to "LOGO", root_path %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="navbar__name">
+      <%= current_user.email %>
+    </div>
+  <% end %>
+  <button data-action="click->sidebar#toggleOpen">
+    <%= Icon.new("hamburger").call %>
+  </button>
+  <%= render partial: "shared/sidebar" %>
+</header>

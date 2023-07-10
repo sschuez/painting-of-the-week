@@ -1,0 +1,101 @@
+<div class="sidebar" 
+      data-sidebar-target="toggle" data-action="click->sidebar#toggleClose">
+  <div class="sidebar__container">
+    <div class="sidebar__inner">
+      <div class="sidebar__context">
+    
+        <button id="close-button" data-action="click->sidebar#toggleClose">
+          <%= Icon.new("close_lg").call %>
+        </button>
+    
+        <ul>
+          <% if user_signed_in? %>
+            <li>
+              <%= button_to destroy_user_session_path,
+                  method: :delete,
+                  class: "sidebar__item" do %>
+                <%= Icon.new("sign_out").call %>
+                <span>Sign out</span>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to new_user_session_path, class: "sidebar__item" do %>
+                <%= Icon.new("sign_in").call %>
+                <span>Sign in</span>
+              <% end %>
+            </li>
+          <% end %>
+
+          <li>
+            <div class="divider"></div>
+          </li>
+
+          <li>
+            <%= link_to root_path, class: "sidebar__item" do %>
+              <%= Icon.new("repeat").call %>
+              <span>
+                Another button
+              </span>
+            <% end %>
+          </li>
+        
+          <li>
+            <div class="divider"></div>
+          </li>
+      
+          <li>
+            <%= link_to root_path, class: "sidebar__item" do %>
+              <%= Icon.new("repeat").call %>
+              <span>
+                One more button
+              </span>
+            <% end %>
+          </li>
+
+          <li>
+            <button class="sidebar__item toggle" data-action="click->sidebar#toggleSub">
+              <%= Icon.new("translate").call %>
+              <span>
+                Language
+              </span>
+              <div data-sidebar-target="arrowIcon"></div>
+              <div class="toggle-sub" id="sub">
+                <ul>
+                  <li>
+                    <%= link_to 'One language', url_for(locale: :de) %>
+                  </li>
+                  <li>
+                    <%= link_to 'Another language', url_for(locale: :en) %>
+                  </li>
+                </ul>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button class="sidebar__item toggle" data-action="click->sidebar#toggleSub">
+              <%= Icon.new("repeat").call %>
+              <span>
+                Something else
+              </span>
+              <div data-sidebar-target="arrowIcon"></div>
+              <div class="toggle-sub" id="sub">
+                <ul>
+                  <li>
+                    <%= link_to 'Root', root_path %>
+                  </li>
+                  <li>
+                    <%= link_to 'Root 2', root_path %>
+                  </li>
+                </ul>
+              </div>
+            </button>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
