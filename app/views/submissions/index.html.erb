@@ -1,0 +1,22 @@
+<div class="my-header">
+  <h1>Works</h1>
+  <div class="flex-end">
+    <% if current_user&.already_submitted_this_week? %>
+      <%= link_to "Edit submission", 
+                  edit_submission_path(current_user&.this_weeks_submission), 
+                  class: "my-btn my-btn--dark",
+                  data: { turbo_frame: dom_id(current_user&.this_weeks_submission)} %>
+    <% else %>
+      <%= link_to "+ New submission", 
+                  new_submission_path, 
+                  class: "my-btn my-btn--dark",
+                  data: { turbo_frame: dom_id(Submission.new) } %>
+    <% end %>
+  </div>
+</div>
+
+<h2>Last weeks' submissions</h2>
+
+
+
+<%= turbo_frame_tag Submission.new %>

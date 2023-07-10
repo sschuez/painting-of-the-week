@@ -1,0 +1,12 @@
+.dropzone {
+  border: 1px dashed rgba(0,0,0,.3) !important;
+  border-radius: var(--space-xxxs) !important;
+  margin-bottom: 1rem !important;
+  margin-top: 6px !important;
+}
+
+.dark-mode .dropzone {
+  background-color: var(--color-tertiary-background-dark) !important;
+  border-color: var(--color-text-body-dark) !important;
+}
+

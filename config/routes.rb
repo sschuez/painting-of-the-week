@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+  get 'submissions/index'
+  get 'submissions/new'
+  get 'submissions/show'
+  get 'submissions/edit'
+  get 'submissions/update'
+  get 'submissions/destroy'
   match '/404', via: :all, to: 'errors#not_found'
   match '/500', via: :all, to: 'errors#internal_server_error'
+  
   devise_for :users
-  root to: 'pages#home'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  
+  root to: 'submissions#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :submissions
 end

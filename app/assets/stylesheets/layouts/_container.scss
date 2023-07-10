@@ -14,3 +14,18 @@
     max-width: 60rem;
   }
 }
+
+.narrow-container {
+  max-width: 700px !important;
+  // margin: auto;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.justify-space-between {
+  display: flex;
+  justify-content: space-between;
+}

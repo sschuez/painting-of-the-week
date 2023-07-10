@@ -14,4 +14,23 @@ module ApplicationHelper
   def nested_dom_id(*args)
     args.map { |arg| arg.respond_to?(:to_key) ? dom_id(arg) : arg }.join("_")
   end
+
+  def formatted_date(date)
+    date.strftime("%e %b %Y")
+  end
+  
+  def dropzone_controller_div(max_files = 4)
+    data = {
+      controller: "dropzone",
+      'dropzone-max-file-size'=>"10",
+      'dropzone-max-files' => "#{max_files}",
+      'dropzone-accepted-files' => 'image/jpeg,image/jpg,image/png,image/gif',
+      'dropzone-dict-file-too-big' => "Your file ({{filesize}} MB) is larger than allowed ({{maxFilesize}} MB)",
+      'dropzone-dict-invalid-file-type' => "Invalid file type. Only jpg, .png or .gif are allowed",
+    }
+    
+    content_tag :div, class: 'dropzone dropzone-default dz-clickable', data: data do
+      yield
+    end
+  end
 end
