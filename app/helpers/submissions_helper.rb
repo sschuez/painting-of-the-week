@@ -10,13 +10,17 @@ module SubmissionsHelper
   end
   
   def last_sunday_at_midnight
-    now = Time.now.now.end_of_week
+    now = Time.zone.now.end_of_week
     last_sunday = now.beginning_of_week
-    last_sunday_at_midnight = last_sunday.change(hour: 0)
+    last_sunday_at_midnight = (last_sunday - 1.minute)
     if now < last_sunday_at_midnight
       last_sunday_at_midnight = (last_sunday - 1.week).change(hour: 0)
     end
     last_sunday_at_midnight
+  end
+
+  def before_last_sunday_at_midnight
+    last_sunday_at_midnight - 1.week
   end
 
   def time_until_next_sunday

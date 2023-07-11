@@ -1,0 +1,48 @@
+@use "mixins/media" as *;
+
+.submission-container {
+  // margin: 0 var(--space-m);
+  padding: var(--space-m);
+  border: var(--border);
+  border-style: dashed;
+  margin-bottom: var(--space-xxl);
+  
+  &__text {
+    text-align: center;
+    font-size: var(--font-size-l);
+    color: var(--color-text-header);
+    margin-bottom: var(--space-l);
+    font-weight: bold;
+  }
+}
+
+.submission {
+
+  &__user {
+
+
+    &__img {
+      border-radius: var(--border-radius);
+      max-height: 15rem;
+      margin: auto;
+      margin-bottom: var(--space-m);
+    }
+  }
+  
+}
+
+.submissions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  margin-bottom: var(--space-xxxl);
+
+  @include media(phone) {
+    grid-template-columns: 1fr;
+  }
+
+  &__img {
+    border-radius: var(--border-radius);
+    // max-height: 10rem;
+  }
+}

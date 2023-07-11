@@ -25,7 +25,8 @@
     <% end %>
   </div>
 
-  <div class="form-actions flex-end">
+  <div class="form-actions flex-center">
+    <%= link_to "Cancel", submissions_path, class: "my-btn my-btn--dark mx-2" %>
     <%= f.button :submit, class: "my-btn my-btn--dark" %>
   </div>
 <% end %>

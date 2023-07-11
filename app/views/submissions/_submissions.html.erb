@@ -1,0 +1,17 @@
+<div>
+  <h2><%= header %>'s submissions</h2>
+  <p>
+    <small>
+      Submitted until <%= formatted_date date %>
+    </small>
+  </p>
+  <div class="submissions">
+    <% if submissions.any? %>
+      <%= render submissions %>
+    <% else %>
+      <p class="submissions__text">
+        No submissions <%= header.downcase %>
+      </p>
+    <% end %>
+  </div>
+</div>

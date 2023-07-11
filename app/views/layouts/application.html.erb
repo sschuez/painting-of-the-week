@@ -22,7 +22,9 @@
     
     <div class="<%= application_container %> <%= narrow_application_container %>">
       <%= yield %>
+      <%= turbo_frame_tag "remote_modal" %>
     </div>
+    <%= render "shared/contact" %>
   
 <%= render 'shared/footer' %>
 

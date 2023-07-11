@@ -1,0 +1,22 @@
+<%= simple_form_for contact do |f| %>
+  
+  <%= form_error_notification(contact) %>
+  
+  <div class="mb-3">
+    <%= f.input :email,
+          hint: "Not required, but if you want me to get back to you, please provide your email",
+          input_html: { value: current_user&.email },
+          class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.input :content, 
+          input_html: { autofocus: true, data: { controller: "textarea-autogrow" } },
+          class: 'form-control' %>
+  </div>
+
+  <div class="flex-end">
+    <%= f.submit "Get in touch", class: 'my-btn my-btn--dark' %>
+  </div>
+
+<% end %>

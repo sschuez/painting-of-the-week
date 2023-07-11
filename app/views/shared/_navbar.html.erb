@@ -2,11 +2,11 @@
         data-controller="sidebar navbar"
         data-action="scroll@window->navbar#updateNavbar">
   <div class="navbar__brand">
-    <%= link_to "LOGO", root_path %>
+    <%= link_to company_name, root_path %>
   </div>
   <% if user_signed_in? %>
     <div class="navbar__name">
-      <%= current_user.email %>
+      <%= current_user.email_name %>
     </div>
   <% end %>
   <button data-action="click->sidebar#toggleOpen">

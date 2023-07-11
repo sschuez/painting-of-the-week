@@ -70,6 +70,19 @@
       color: var(--color-white) !important;
     }
   }
+
+  &--small {
+    font-size: var(--font-size-xs) !important;
+    padding: var(--space-xxs) var(--space-s) !important;
+  }
+
+  &--contact {
+    position: sticky;
+    z-index: 99;
+    bottom: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+  }
 }
 
 .button {

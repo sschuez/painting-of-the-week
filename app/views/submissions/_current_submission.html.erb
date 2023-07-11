@@ -1,0 +1,32 @@
+<h2>Your current submission</h2>
+<% if current_user&.already_submitted_this_week? %>
+  <small><p>You can edit until Sunday midnight.</p></small>
+<% end %> 
+<div class="submission-container">
+  <% if user_signed_in? %>
+
+    <% if current_user.already_submitted_this_week? %>
+      <%= render "submissions/user_submission", submission: current_user.this_weeks_submission %>
+    <% else %>
+      <%= turbo_frame_tag Submission.new do %>
+        <p class="submission-container__text">
+          You haven't submitted anything this week.
+        </p>
+        <%= link_to "+ New submission", 
+                    new_submission_path, 
+                    class: "my-btn my-btn--dark",
+                    data: { turbo_frame: dom_id(Submission.new) } %>
+      <% end %>
+    <% end %> 
+
+  <% else %>
+
+    <p class="submission-container__text">
+      Please sign in to submit or edit your work
+    </p>
+    <div class="flex-center">
+      <%= link_to "Sign in", new_user_session_path, class: "my-btn my-btn--dark" %>
+    </div>
+
+  <% end %>
+</div>

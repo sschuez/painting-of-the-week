@@ -1,0 +1,12 @@
+<%= turbo_frame_tag submission do %>
+  <% if submission.file.attached? %>
+    <%= cl_image_tag submission.file.key, class: "submission__user__img" %>
+  <% end %>
+
+  <div class="flex-center">
+    <%= link_to "Edit submission", 
+                edit_submission_path(submission), 
+                class: "my-btn my-btn--dark",
+                data: { turbo_frame: dom_id(submission)} %> 
+  </div>
+<% end %>

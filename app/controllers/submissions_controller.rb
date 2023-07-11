@@ -4,7 +4,8 @@ class SubmissionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @submissions = policy_scope(Submission)
+    @submissions_last_week = policy_scope(Submission).last_week
+    @submissions_before_last_week = policy_scope(Submission).week_before_last_week
   end
 
   def new
@@ -35,6 +36,16 @@ class SubmissionsController < ApplicationController
   end
 
   def update
+    submission_params_with_image = submission_params[:file] == "" ? submission_params.except(:file) : submission_params
+
+    if @submission.update(submission_params_with_image)
+      respond_to do |format|
+        format.html { redirect_to submissions_path, notice: "Submission was successfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Submission was successfully updated." }
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

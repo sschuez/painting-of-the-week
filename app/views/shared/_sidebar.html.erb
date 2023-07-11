@@ -18,6 +18,36 @@
                 <span>Sign out</span>
               <% end %>
             </li>
+          <% if current_user&.admin? %>
+            <li>
+              <div class="divider"></div>
+            </li>
+            <li>
+              <button class="sidebar__item toggle" data-action="click->sidebar#toggleSub">
+                <%= Icon.new("fingerprint").call %>
+                <span>
+                  Admin
+                </span>
+                <div data-sidebar-target="arrowIcon"></div>
+                <div class="toggle-sub" id="sub">
+                  <ul>
+                    <li>
+                      <%= link_to contacts_path do %>
+                        <%= Icon.new("contact").call %>
+                        <span>Requests</span>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to sidekiq_web_path do %>
+                        <%= Icon.new("sidekiq").call %>
+                        <span>Sidekiq</span>
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
+              </button>
+            </li>
+          <% end %>
           <% else %>
             <li>
               <%= link_to new_user_session_path, class: "sidebar__item" do %>
@@ -25,17 +55,27 @@
                 <span>Sign in</span>
               <% end %>
             </li>
+
           <% end %>
 
           <li>
             <div class="divider"></div>
           </li>
-
+          
           <li>
             <%= link_to root_path, class: "sidebar__item" do %>
-              <%= Icon.new("repeat").call %>
+              <%= Icon.new("easel").call %>
               <span>
-                Another button
+                Current works
+              </span>
+            <% end %>
+          </li>
+        
+          <li>
+            <%= link_to about_path, class: "sidebar__item" do %>
+              <%= Icon.new("building").call %>
+              <span>
+                About
               </span>
             <% end %>
           </li>
@@ -43,56 +83,18 @@
           <li>
             <div class="divider"></div>
           </li>
-      
-          <li>
-            <%= link_to root_path, class: "sidebar__item" do %>
-              <%= Icon.new("repeat").call %>
+
+          <li data-action="click->sidebar#closeSidebar">
+            <%= link_to new_contact_path, 
+                data: { controller: "turbo" },
+                class: "sidebar__item" do %>
+              <%= Icon.call("mail") %>
               <span>
-                One more button
+                Get in touch
               </span>
             <% end %>
           </li>
-
-          <li>
-            <button class="sidebar__item toggle" data-action="click->sidebar#toggleSub">
-              <%= Icon.new("translate").call %>
-              <span>
-                Language
-              </span>
-              <div data-sidebar-target="arrowIcon"></div>
-              <div class="toggle-sub" id="sub">
-                <ul>
-                  <li>
-                    <%= link_to 'One language', url_for(locale: :de) %>
-                  </li>
-                  <li>
-                    <%= link_to 'Another language', url_for(locale: :en) %>
-                  </li>
-                </ul>
-              </div>
-            </button>
-          </li>
-
-          <li>
-            <button class="sidebar__item toggle" data-action="click->sidebar#toggleSub">
-              <%= Icon.new("repeat").call %>
-              <span>
-                Something else
-              </span>
-              <div data-sidebar-target="arrowIcon"></div>
-              <div class="toggle-sub" id="sub">
-                <ul>
-                  <li>
-                    <%= link_to 'Root', root_path %>
-                  </li>
-                  <li>
-                    <%= link_to 'Root 2', root_path %>
-                  </li>
-                </ul>
-              </div>
-            </button>
-          </li>
-
+      
         </ul>
 
       </div>

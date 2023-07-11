@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   has_many :submissions, dependent: :nullify
 
+  def email_name
+    email.split('@').first
+  end
+
   def already_submitted_this_week?
     submissions.this_week.any?
   end

@@ -1,0 +1,41 @@
+<div class="my-header">
+  <h1>Requests</h1>
+</div>
+<%= turbo_frame_tag "contacts" do %>  
+  <div class="card mb-4">
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <th>Contacts</th>
+          <th colspan=3>Actions</th>
+        </thead>
+        <tbody>
+          <% @contacts.ordered.each do |contact| %>
+            <tr>
+              <td><%= highlight(contact.email, query_array) %></td>
+
+              <td>
+                <%= link_to contact_path(contact), data: { controller: "turbo" } do %>
+                  <%= Icon.new("eye").call %>
+                <% end %>
+              </td>
+
+              <% if current_user&.admin? %>
+                <td>
+                  <%= link_to contact_path(contact),
+                    "data-turbo-method": :delete,
+                    "data-turbo-confirm": "Are you sure?" do %>
+                    <%= Icon.new("trash").call %>
+                  <% end %>
+                </td>
+              <% end %>
+                
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+        
+      <%#== pagy_bootstrap_nav @pagy %>
+    </div>
+  </div>
+<% end %>

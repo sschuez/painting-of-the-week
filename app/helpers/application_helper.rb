@@ -16,9 +16,17 @@ module ApplicationHelper
   end
 
   def formatted_date(date)
-    date.strftime("%e %b %Y")
+    date.strftime("%A, %e %b %Y")
   end
-  
+
+  def company_link
+    link_to company_name, root_path
+  end
+
+  def company_name
+    "Hue Hub"
+  end
+
   def dropzone_controller_div(max_files = 4)
     data = {
       controller: "dropzone",

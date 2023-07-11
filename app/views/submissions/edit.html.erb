@@ -1,2 +1,5 @@
-<h1>Submissions#edit</h1>
-<p>Find me in app/views/submissions/edit.html.erb</p>
+<h1>Edit submission</h1>
+
+<%= turbo_frame_tag @submission do %>
+  <%= render "form", submission: @submission %>
+<% end %>

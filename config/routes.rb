@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   
   devise_for :users
   
+  # PAGES
+  get "/about", to: "pages#about"
   root to: 'submissions#index'
+
+  # CONTACTS
+  resources :contacts, except: [:edit, :update]
 
   resources :submissions
 end

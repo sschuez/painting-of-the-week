@@ -1,4 +1,8 @@
 class Icon
+  def self.call(*args, &block)
+    new(*args, &block).call
+  end
+  
   def initialize(icon)
     @icon = icon
     @icons = {
@@ -13,6 +17,15 @@ class Icon
       close_lg: '<i class="bi bi-x-lg"></i>',
       sign_out: '<i class="bi bi-box-arrow-right"></i>',
       sign_in: '<i class="bi bi-box-arrow-in-right"></i>',
+      easel: '<i class="bi bi-easel"></i>',
+      building: '<i class="bi bi-building"></i>',
+      mail: '<i class="bi bi-envelope"></i>',
+      admin: '<i class="bi bi-person-badge"></i>',
+      eye: '<i class="bi bi-eye"></i>',
+      fingerprint: '<i class="bi bi-fingerprint"></i>',
+      contact: '<i class="bi bi-person-lines-fill"></i>',
+      sidekiq: '<i class="bi bi-arrow-90deg-right"></i>',
+      top: '<i class="bi bi-box-arrow-up-right"></i>',
       translate: '<i class="bi bi-translate"></i>'
     }
   end
