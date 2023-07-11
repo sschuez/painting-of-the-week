@@ -5,4 +5,8 @@ class Submission < ApplicationRecord
   scope :this_week, -> { where('created_at >= ?', Time.zone.now.beginning_of_week) }
   scope :last_week, -> { where('created_at >= ? AND created_at < ?', Time.zone.now.beginning_of_week - 1.week, Time.zone.now.beginning_of_week) }
   scope :week_before_last_week, -> { where('created_at >= ? AND created_at < ?', Time.zone.now.beginning_of_week - 2.week, Time.zone.now.beginning_of_week - 1.week) }
+
+  def display_title
+    title.present? ? title : 'Untitled'
+  end
 end

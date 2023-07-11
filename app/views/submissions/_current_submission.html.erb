@@ -12,10 +12,12 @@
         <p class="submission-container__text">
           You haven't submitted anything this week.
         </p>
-        <%= link_to "+ New submission", 
-                    new_submission_path, 
-                    class: "my-btn my-btn--dark",
-                    data: { turbo_frame: dom_id(Submission.new) } %>
+        <div class="flex-center">
+          <%= link_to "+ New submission", 
+                      new_submission_path, 
+                      class: "my-btn my-btn--dark",
+                      data: { turbo_frame: dom_id(Submission.new) } %>
+        </div>
       <% end %>
     <% end %> 
 

@@ -1,4 +1,4 @@
 <%= turbo_stream.replace @submission do %>
-  <%= render "submissions/submission", submission: @submission %>
+  <%= render "submissions/user_submission", submission: @submission %>
 <% end %>
 <%= render_turbo_stream_flash_messages %>

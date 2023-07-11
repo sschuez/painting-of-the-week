@@ -21,4 +21,7 @@ Rails.application.routes.draw do
 
   # SUBMISSIONS
   resources :submissions
+
+  # FILE UPLOADS
+  resources :file_uploads, only: [:destroy]
 end
