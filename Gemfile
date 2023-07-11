@@ -86,3 +86,5 @@ group :test do
   gem "capybara"
   gem "database_cleaner"
 end
+
+gem "dockerfile-rails", ">= 1.5", :group => :development
