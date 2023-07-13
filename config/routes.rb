@@ -24,4 +24,7 @@ Rails.application.routes.draw do
 
   # FILE UPLOADS
   resources :file_uploads, only: [:destroy]
+
+  # TOPICS
+  resources :topics, only: [:create]
 end
