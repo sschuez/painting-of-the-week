@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   skip_after_action :verify_authorized
 
   def create
-    previous_topics = Topic.all.map { |topic| topic.title }
+    previous_topics = Topic.all.map(&:title)
     TopicJob.perform_later(previous_topics)
   end
       
