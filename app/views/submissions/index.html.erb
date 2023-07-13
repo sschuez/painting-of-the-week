@@ -1,9 +1,21 @@
 <div class="my-header">
+  <h1>This week's topic</h1>
+</div>
+
+<div class="alert alert-primary" role="alert">
+  <h2 class="alert-heading"><%= Topic.last.title %></h2>
+
+  <p class="mb-0">
+    <%= Topic.last.body %>
+  </p>
+</div>  
+<br>
+<%= render "submissions/current_submission" %>
+  
+<div class="my-header">
   <h1>Works</h1>
 </div>
 
-<%= render "submissions/current_submission" %>
-  
 <%= render "submissions/submissions", submissions: @submissions_last_week, header: "Last week", date: last_sunday_at_midnight %>
 
 <%= render "submissions/submissions", submissions: @submissions_before_last_week, header: "Previous week", date: before_last_sunday_at_midnight %>
