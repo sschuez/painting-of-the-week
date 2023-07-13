@@ -15,12 +15,12 @@ console_command = "/rails/bin/rails console"
   sidekiq = "bundle exec sidekiq"
 
 [http_service]
+  processes = ["app"]
   internal_port = 3000
   force_https = true
   auto_stop_machines = false
   auto_start_machines = false
   min_machines_running = 1
-  processes = ["app"]
 
 [[statics]]
   guest_path = "/rails/public"
