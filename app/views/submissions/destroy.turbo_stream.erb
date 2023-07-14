@@ -1,2 +1,7 @@
-<%= turbo_stream.remove @submission %>
+<% if request.referrer.include?("users") %>
+  <%= turbo_stream.remove @submission %>
+<% else %>
+  <%= turbo_stream.replace @submission, partial: "submissions/user_submission_absent" %>
+<% end %>
+
 <%= render_turbo_stream_flash_messages %>

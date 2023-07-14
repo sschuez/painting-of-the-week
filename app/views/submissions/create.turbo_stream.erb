@@ -1,2 +1,7 @@
-<%= turbo_stream.update Submission.new, "" %>
+<%#= turbo_stream.update Submission.new, "" %>
+
+<%= turbo_stream.replace Submission.new do %>
+  <%= render "submissions/user_submission", submission: @submission %>
+<% end %>
+
 <%= render_turbo_stream_flash_messages %>

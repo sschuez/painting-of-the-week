@@ -4,14 +4,21 @@
 
     <p class="mb-1"><strong><%= submission.display_title %></strong></p>
 
-    <%= cl_image_tag photo_or_fallback(submission.file), class: "submission__img--home" %>
+    <%= cl_image_tag photo_or_fallback(submission.file), class: "submission__img submission__img--home" %>
 
-    <div class="flex-center">
-      <%= link_to "Edit submission", 
-                  edit_submission_path(submission), 
-                  class: "my-btn my-btn--dark mb-2",
-                  data: { turbo_frame: dom_id(submission)} %>
-    </div>
+    <% if policy(submission).edit? %>
+      <div class="flex-center">
+        <%= button_to "Delete",  
+                    submission_path(submission),
+                    class: "my-btn my-btn--dark mx-2",
+                    method: :delete,
+                    data: { turbo_confirm: "Are you sure?" } %>
+        <%= link_to "Edit", 
+                    edit_submission_path(submission), 
+                    class: "my-btn my-btn--dark mb-2",
+                    data: { turbo_frame: dom_id(submission)} %>
+      </div>
+    <% end %>
 
     <small class="text-muted">If unchanged, this work will be published below at the end of this week.</small>
   
