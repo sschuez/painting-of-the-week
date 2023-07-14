@@ -5,12 +5,20 @@
   </h3>
 
   <div class="user-profile__works">
-    <%= cl_image_tag photo_or_fallback(submission.file), class: "submission__img user_profile__works--img" %>
+    <%= link_to submission_path(submission), target: "_top" do %>
+      <%= cl_image_tag photo_or_fallback(submission.file), class: "submission__img user_profile__works--img" %>
+    <% end %>
+
     <div class="user-profile__works--description">
           
-      <% if policy(submission).edit? %>
-        <div class="user-profile__works--actions">
-          
+      <div class="user-profile__works--actions">
+
+        <%= link_to submission_path(submission), target: "_top" do %>
+          <%= Icon.call("eye") %>
+        <% end %> 
+
+        <% if policy(submission).edit? %>
+            
           <% if current_user&.admin || submission.this_weeks_submission? %>
             <%= link_to edit_submission_path(submission), data: { turbo_frame: dom_id(submission) } do %>
               <%= Icon.call("edit") %>
@@ -24,8 +32,9 @@
             <%= Icon.call("trash") %>
           <% end %>
 
-        </div>
-      <% end %>
+        <% end %>
+
+      </div>
 
       <h5 class="user-profile__works--description-title"><%= submission.title %></h5>
       <p class="user-profile__works--description-text"><%= simple_format submission.description %></p>

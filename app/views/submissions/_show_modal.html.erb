@@ -1,0 +1,25 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade" data-controller="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <div class="justify-space-between">
+            <div class="justify-space-between">
+              <h5 class="modal-title">Display art</h5>
+            </div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        </div>
+        <div class="modal-body">
+          
+          <%= turbo_frame_tag nested_dom_id("show", "submission"), src: submission_submission_path(@submission), loading: "lazy" do %>
+            <%= render "shared/spinner" %>
+          <% end %>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

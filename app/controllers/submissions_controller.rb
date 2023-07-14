@@ -1,7 +1,7 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
   before_action :check_if_user_has_already_submitted_this_week, only: [:new, :create]
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :submission]
 
   def index
     @submissions_last_week = policy_scope(Submission).last_week
@@ -55,6 +55,11 @@ class SubmissionsController < ApplicationController
       format.html { redirect_to submissions_path, notice: "Submission was successfully destroyed." }
       format.turbo_stream { flash.now[:notice] = "Submission was successfully destroyed." }
     end
+  end
+
+  def submission
+    @submission = Submission.find(params[:id])
+    authorize @submission, :show?
   end
 
   private

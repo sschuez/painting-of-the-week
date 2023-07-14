@@ -15,6 +15,10 @@ class DateRange < ActiveRecord::Base
     Date.today.end_of_week.to_time(:utc)
   end
 
+  def self.beginning_of_this_week
+    Date.today.beginning_of_week.to_time(:utc)
+  end
+
   def self.time_left_until_end_of_this_week
     DateRange.end_of_this_week - Time.now
   end

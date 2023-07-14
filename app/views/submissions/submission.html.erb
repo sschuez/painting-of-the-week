@@ -1,0 +1,39 @@
+<%= turbo_frame_tag nested_dom_id("show", "submission") do %>
+  <div class="submission">
+
+    <%= render "submissions/nav_btns", submission: @submission %>
+    <br>
+
+    <%= render "shared/topic", topic: @submission.topic %>
+    <div class="flex-end">
+      <p class="small text-secondary mt-0">Topic for this painting, week of <%=  DateRange.week_range_in_words_for(@submission.topic.created_at) %></p>
+    </div>
+    <br>
+    
+    <%= link_to submission_path(@submission), target: "_blank" do %>
+      <div class="flex-center">
+        <h1 class="text-center display-5 fw-bold lh-1"><%= @submission.title %></h1>
+        <span class="mx-3">
+          <%= Icon.call("top") %>
+        </span>
+      </div>
+      
+      <%= cl_image_tag photo_or_fallback(@submission.file), class: "submission__img" %>
+    <% end %>
+  
+    
+    <div class="flex-end my-1">
+      <p class="small text-secondary">Submitted by: <%= link_to @submission.user.email_name, user_path(@submission.user), target: "_top _blank" %>, <%= time_tag @submission.updated_at, "data-local": "time-ago" %></p>
+    </div>
+
+    <div class="text-center">
+      <p>
+        <%= @submission.description %>
+      </p>
+    </div>
+
+    <%= render "submissions/nav_btns", submission: @submission %>
+
+  </div>
+
+<% end %>

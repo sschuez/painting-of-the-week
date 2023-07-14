@@ -20,6 +20,7 @@
       position: relative;
       
       &-title {
+        padding-top: var(--space-m);
         margin-bottom: 0;
       }
       
@@ -31,7 +32,7 @@
     &--actions {
       display: flex;
       justify-content: space-between;
-      width: 3rem;
+      width: 4.5rem;
       position: absolute;
       top: 6px;
       right: 0;

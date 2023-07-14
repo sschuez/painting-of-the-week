@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   # USERS
   devise_for :users
   resources :users, only: [:show] do
-    member do
-      get :submission
-    end
+    get :submission, on: :member
   end
   
   # PAGES
@@ -25,7 +23,9 @@ Rails.application.routes.draw do
   resources :contacts, except: [:edit, :update]
 
   # SUBMISSIONS
-  resources :submissions
+  resources :submissions do
+    get :submission, on: :member
+  end
 
   # FILE UPLOADS
   resources :file_uploads, only: [:destroy]

@@ -1,0 +1,12 @@
+<div class="justify-space-between">
+  <div class="previous">
+    <% if submission.previous %>
+      <%= link_to sanitize("&larr; Previous"), submission_submission_path(submission.previous) %>
+    <% end %>
+  </div>
+  <div class="next">
+    <% if submission.next %>
+      <%= link_to sanitize("Next &rarr;"), submission_submission_path(submission.next) %>
+    <% end %>
+  </div>
+</div>

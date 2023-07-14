@@ -44,8 +44,6 @@ module ApplicationHelper
       "#{minutes} minutes"
     end
   end
-    
-
 
   def dropzone_controller_div(max_files = 4)
     data = {
