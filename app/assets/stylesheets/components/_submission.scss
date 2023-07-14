@@ -18,17 +18,20 @@
 
 .submission {
 
-  &__user {
-
-
-    &__img {
-      border-radius: var(--border-radius);
+  &__img {
+    border-radius: var(--border-radius);
+    
+    &--profile {
+    }
+    
+    &--home {
       max-height: 15rem;
       margin: auto;
       margin-bottom: var(--space-m);
     }
+
   }
-  
+
 }
 
 .submissions {

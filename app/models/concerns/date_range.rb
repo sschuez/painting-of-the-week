@@ -19,7 +19,11 @@ class DateRange < ActiveRecord::Base
     DateRange.end_of_this_week - Time.now
   end
 
-  def self.week_range_of(date)
+  def self.week_range_in_words_for(date)
+    "#{date.beginning_of_week.strftime("%B %d")} - #{date.end_of_week.strftime("%B %d")}"
+  end
+
+  def self.week_range_for(date)
     date.beginning_of_week..date.end_of_week
   end
 end

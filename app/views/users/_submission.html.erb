@@ -1,0 +1,28 @@
+<%= turbo_frame_tag submission do %>
+
+  <div class="user-profile__works">
+    <%= cl_image_tag photo_or_fallback(submission.file), class: "submission__img user_profile__works--img" %>
+    <div class="user-profile__works--description">
+          
+      <% if policy(submission).edit? %>
+        <div class="user-profile__works--actions">
+          
+          <% if current_user&.admin || submission.this_weeks_submission? %>
+            <%= link_to edit_submission_path(submission), data: { turbo_frame: dom_id(submission) } do %>
+              <%= Icon.call("edit") %>
+            <% end %>
+          <% end %>
+          
+          <%= button_to submission_path(submission), class: "button" do %>
+            <%= Icon.call("trash") %>
+          <% end %>
+
+        </div>
+      <% end %>
+
+      <h5 class="user-profile__works--description-title"><%= submission.title %></h5>
+      <p class="user-profile__works--description-text"><%= simple_format submission.description %></p>
+    </div>
+  </div>
+
+<% end %>

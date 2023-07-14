@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   # USERS
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      get :submission
+    end
+  end
   
   # PAGES
   get "/about", to: "pages#about"

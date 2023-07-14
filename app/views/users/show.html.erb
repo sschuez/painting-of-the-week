@@ -1,4 +1,14 @@
-<div class="my-header">
-  <h1><%= user_profile_name.capitalize %> profile</h1>
-  <%= Avatar.call(user: @user) %>
+<div class="user-profile">
+  <div class="my-header">
+    <h1><%= user_profile_name.capitalize %> profile</h1>
+    <%= Avatar.call(user: @user) %>
+  </div>
+
+
+  <h2><%= user_profile_name.capitalize %> works</h2>
+  <% @submissions.each do |submission| %>
+    <%= turbo_frame_tag nested_dom_id(@user, submission), src: submission_user_path(@user, submission_id: submission.id), loading: "lazy" do %>
+      <%= render "shared/spinner" %>
+    <% end %>
+  <% end %>
 </div>

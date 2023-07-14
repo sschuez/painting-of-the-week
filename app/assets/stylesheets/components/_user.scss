@@ -1,0 +1,41 @@
+@use "mixins/media" as *;
+
+.user-profile {
+
+  &__title {
+    margin-top: var(--space-xl);
+  }
+
+  &__works {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include media(phoneAndUp) {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    &--description {
+      padding: var(--space-m);
+      text-align: center;
+      position: relative;
+      
+      &-title {
+        margin-bottom: 0;
+      }
+      
+      &-text {
+        margin: 0;
+      }
+    }
+    
+    &--actions {
+      display: flex;
+      justify-content: space-between;
+      width: 3rem;
+      position: absolute;
+      top: 6px;
+      right: 0;
+    }
+  }
+  
+}

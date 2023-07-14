@@ -4,7 +4,7 @@
 
     <p class="mb-1"><strong><%= submission.display_title %></strong></p>
 
-    <%= cl_image_tag photo_or_fallback(submission.file), class: "submission__user__img" %>
+    <%= cl_image_tag photo_or_fallback(submission.file), class: "submission__img--home" %>
 
     <div class="flex-center">
       <%= link_to "Edit submission", 

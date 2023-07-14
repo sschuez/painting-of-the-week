@@ -3,7 +3,7 @@ class Icon < ApplicationConcern
     @icon = icon
     @icons = {
       trash: '<i class="bi bi-trash-fill"></i>',
-      edit: '<i class="bi bi-pencil-fill"></i>',
+      edit: '<i class="bi bi-pencil-square"></i>',
       confirm: '<i class="bi bi-check-circle-fill"></i>',
       cancel: '<i class="bi bi-x-circle-fill"></i>',
       handle: '<i class="bi bi-grip-horizontal handle mt-xxs ml-s"></i>',

@@ -1,4 +1,11 @@
 <%= turbo_stream.replace @submission do %>
-  <%= render "submissions/user_submission", submission: @submission %>
+
+  <% if request.referrer.include?("users") %>
+    <%= render "users/submission", submission: @submission %>
+  <% else %>
+    <%= render "submissions/user_submission", submission: @submission %>
+  <% end %>
+
 <% end %>
+
 <%= render_turbo_stream_flash_messages %>
