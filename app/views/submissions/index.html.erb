@@ -14,7 +14,3 @@
 <%= render "submissions/submissions", submissions: @submissions_last_week, header: "Last week", date: last_sunday_at_midnight %>
 
 <%= render "submissions/submissions", submissions: @submissions_before_last_week, header: "Previous week", date: before_last_sunday_at_midnight %>
-
-<% if current_user&.admin? %>
-  <%= button_to "New topic", topics_path, class: "my-btn my-btn--primary" %>
-<% end %>
