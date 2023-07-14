@@ -6,9 +6,15 @@
 
 
   <h2><%= user_profile_name.capitalize %> works</h2>
+  
+  <% if @submissions.empty? %>
+    <%= render "users/empty_state" %>
+  <% end %>
   <% @submissions.each do |submission| %>
+  
     <%= turbo_frame_tag nested_dom_id(@user, submission), src: submission_user_path(@user, submission_id: submission.id), loading: "lazy" do %>
       <%= render "shared/spinner" %>
     <% end %>
+
   <% end %>
 </div>
