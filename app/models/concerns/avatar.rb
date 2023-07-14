@@ -10,7 +10,8 @@ class Avatar
   
   def initialize(params)
     @user = params[:user]
-    @classes = ['avatar-circle', params[:extra_classes]].flatten.compact.join(' ')
+    @avatar_classes = ['avatar-circle', params.dig(:extra_classes, :avatar)].flatten.compact.join(' ')
+    @text_classes = ['avatar-text', params.dig(:extra_classes, :text)].flatten.compact.join(' ') 
   end
 
   def call
@@ -36,14 +37,14 @@ class Avatar
   def gravatar_image
     gravatar_id = Digest::MD5.hexdigest(email)
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
-    image_tag(gravatar_url, alt: email, class: @classes)
+    image_tag(gravatar_url, alt: email, class: @avatar_classes)
   end
 
   def initials_element
     initials = [email[0], email[1]].join('')
     style = "background-color: #{avatar_color(initials.first)};"
-    content_tag :div, class: @classes, style: style do
-      content_tag :div, initials, class: 'avatar-text'
+    content_tag :div, class: @avatar_classes, style: style do
+      content_tag :div, initials, class: @text_classes
     end
   end
 

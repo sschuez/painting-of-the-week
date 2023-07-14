@@ -1,8 +1,4 @@
 <%= turbo_frame_tag nested_dom_id(@user, @submission) do %>
-
-  <h3 class="user-profile__title">
-    Week of <%= DateRange.week_range_in_words_for(@submission.updated_at) %>
-  </h3>
   
   <%= render "users/submission", submission: @submission %>
 

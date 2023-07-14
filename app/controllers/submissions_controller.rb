@@ -49,6 +49,12 @@ class SubmissionsController < ApplicationController
   end
 
   def destroy
+    @submission.destroy
+
+    respond_to do |format|
+      format.html { redirect_to submissions_path, notice: "Submission was successfully destroyed." }
+      format.turbo_stream { flash.now[:notice] = "Submission was successfully destroyed." }
+    end
   end
 
   private

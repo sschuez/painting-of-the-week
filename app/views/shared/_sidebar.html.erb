@@ -23,7 +23,10 @@
                 <%#= Icon.new("user").call %>
                 <%= Avatar.call(
                     user: current_user, 
-                    extra_classes: [ "avatar-circle--small" ]
+                    extra_classes: {
+                      avatar: ["avatar-circle--small"],
+                      text: ["avatar-text--small"]
+                    }
                   ) %>
                 <span>
                   Your profile

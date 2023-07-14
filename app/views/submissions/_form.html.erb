@@ -27,8 +27,12 @@
 
   <div class="form-actions flex-center">
     
-    <% unless request.referrer.include?("users") %>
-      <%#= link_to "Cancel", user_path(@submission.user), class: "my-btn my-btn--dark mx-2" %>
+    <% if request.referrer.include?("users") %>
+      <%= link_to "Cancel", 
+                  submission_user_path(@submission.user, submission_id: @submission.id), 
+                  data: { turbo_frame: nested_dom_id(@submission.user, @submission)}, 
+                  class: "my-btn my-btn--dark mx-2" %>
+    <% else %>
       <%= link_to "Cancel", submissions_path, class: "my-btn my-btn--dark mx-2" %>
     <% end %>
     
