@@ -6,5 +6,4 @@ class TopicsController < ApplicationController
     previous_topics = Topic.all.map(&:title)
     TopicJob.perform_later(previous_topics)
   end
-      
 end

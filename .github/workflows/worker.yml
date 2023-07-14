@@ -2,8 +2,8 @@ name: BG Worker To Create A New Topic each Monday Morning
 
 on:
   schedule:
-    # Once per hour
-#     - cron: '0 * * * *'
+    # Every Monday at 00:05 UTC
+    - cron: '5 0 * * MON'
 
 jobs:
   worker:
@@ -11,4 +11,4 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Call server
-#         run: wget http://stgym.club/start_clearing_lonely_workouts
+        run: wget http://huehub.art/create_new_topic
