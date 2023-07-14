@@ -1,0 +1,14 @@
+name: BG Worker To Create A New Topic each Monday Morning
+
+on:
+  schedule:
+    # Once per hour
+#     - cron: '0 * * * *'
+
+jobs:
+  worker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Call server
+#         run: wget http://stgym.club/start_clearing_lonely_workouts
