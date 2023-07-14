@@ -5,10 +5,7 @@ class TopicJob < ApplicationJob
     topic = TopicCreator.call({ previous_topics: previous_topics })
 
     if topic.success?
-      title = topic.payload[:choices]["message"]["content"].split("\n\n").first.gsub("Title: ", "")
-      body = topic.payload[:choices]["message"]["content"].split("\n\n").last.gsub("Description: ", "")
-      
-      @topic = Topic.create!(title: title, body: body)
+      @topic = Topic.create_from_topic_creator(topic.payload[:choices]["message"]["content"])
       puts "🔥 Created topic: #{@topic.body}"
     else
       logger.error topic.error_message

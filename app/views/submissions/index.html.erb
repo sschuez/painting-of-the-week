@@ -15,9 +15,12 @@
 <div class="my-header">
   <h1>Works</h1>
 </div>
+<%= convert_to_days_and_hours DateRange.time_left_until_end_of_this_week %>
 
 <%= render "submissions/submissions", submissions: @submissions_last_week, header: "Last week", date: last_sunday_at_midnight %>
 
 <%= render "submissions/submissions", submissions: @submissions_before_last_week, header: "Previous week", date: before_last_sunday_at_midnight %>
 
-<%= button_to "New topic", topics_path, class: "my-btn my-btn--primary" %>
+<% if current_user&.admin? %>
+  <%= button_to "New topic", topics_path, class: "my-btn my-btn--primary" %>
+<% end %>

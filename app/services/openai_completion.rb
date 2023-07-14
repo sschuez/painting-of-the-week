@@ -1,5 +1,4 @@
 class OpenaiCompletion < ApplicationService
-  
   def initialize(params)
     @prompt_text        = params[:prompt_text]
     @url                = "https://api.openai.com/v1/chat/completions"

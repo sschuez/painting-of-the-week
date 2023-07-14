@@ -1,8 +1,4 @@
-class Icon
-  def self.call(*args, &block)
-    new(*args, &block).call
-  end
-  
+class Icon < ApplicationConcern
   def initialize(icon)
     @icon = icon
     @icons = {
@@ -22,6 +18,7 @@ class Icon
       mail: '<i class="bi bi-envelope"></i>',
       admin: '<i class="bi bi-person-badge"></i>',
       eye: '<i class="bi bi-eye"></i>',
+      user: '<i class="bi bi-person"></i>',
       fingerprint: '<i class="bi bi-fingerprint"></i>',
       contact: '<i class="bi bi-person-lines-fill"></i>',
       sidekiq: '<i class="bi bi-arrow-90deg-right"></i>',

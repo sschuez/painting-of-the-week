@@ -18,6 +18,18 @@
                 <span>Sign out</span>
               <% end %>
             </li>
+            <li>
+              <%= link_to user_path(current_user), class: "sidebar__item" do %>
+                <%#= Icon.new("user").call %>
+                <%= Avatar.call(
+                    user: current_user, 
+                    extra_classes: [ "avatar-circle--small" ]
+                  ) %>
+                <span>
+                  Your profile
+                </span>
+              <% end %>
+            </li>
           <% if current_user&.admin? %>
             <li>
               <div class="divider"></div>

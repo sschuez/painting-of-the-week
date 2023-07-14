@@ -27,6 +27,22 @@ module ApplicationHelper
     "Hue Hub"
   end
 
+  def convert_to_days_and_hours(seconds)
+    days = (seconds / 86400).floor
+    hours = ((seconds / 3600) % 24).floor
+    minutes = ((seconds / 60) % 60).floor
+
+    if days > 0
+      "#{days} days and #{hours} hours"
+    elsif hours > 0
+      "#{hours} hours and #{minutes} minutes"
+    else
+      "#{minutes} minutes"
+    end
+  end
+    
+
+
   def dropzone_controller_div(max_files = 4)
     data = {
       controller: "dropzone",
