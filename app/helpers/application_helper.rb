@@ -15,6 +15,10 @@ module ApplicationHelper
     args.map { |arg| arg.respond_to?(:to_key) ? dom_id(arg) : arg }.join("_")
   end
 
+  def current_topic
+    Topic.current
+  end
+
   def formatted_date(date)
     date.strftime("%A, %e %b %Y")
   end

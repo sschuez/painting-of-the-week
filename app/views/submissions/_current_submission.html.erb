@@ -10,7 +10,7 @@
     <% if current_user.already_submitted_this_week? %>
       <%= render "submissions/user_submission", submission: current_user.this_weeks_submission %>
     <% else %>
-      <%= render "submissions/no_user_submission" %>
+      <%= render "submissions/user_submission_absent" %>
     <% end %> 
 
   <% else %>
