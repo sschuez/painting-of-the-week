@@ -4,9 +4,6 @@
     <%= Avatar.call(user: @user) %>
   </div>
 
-  <% if current_user&.admin? %>
-    <%= button_to "New topic", topics_path, class: "my-btn my-btn--primary" %>
-  <% end %>
 
   <h2><%= user_profile_name.capitalize %> works</h2>
   
@@ -19,5 +16,13 @@
       <%= render "shared/spinner" %>
     <% end %>
 
+  <% end %>
+  
+  <% if current_user&.admin? %>
+    <br>
+    <br>
+    <h2>Admin actions</h2>
+    <%= button_to "New topic", topics_path, class: "my-btn my-btn--dark" %>
+  
   <% end %>
 </div>
