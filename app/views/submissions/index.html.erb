@@ -1,15 +1,15 @@
 <div class="my-header">
-  <h1 class="display-5 fw-bold lh-1 my-3">This week's topic</h1>
+  <h1 class="display-5 fw-bold lh-1 my-3">
+    This week's topic
+  </h1>
 </div>
 
 <%= render "shared/topic", topic: current_topic %>
 <br>
+
 <%= render "submissions/current_submission" %>
-  
 
 <h1 class="display-5 fw-bold lh-1 my-3">Submitted art</h1>
-
-<%#= convert_to_days_and_hours DateRange.time_left_until_end_of_this_week %>
 
 <%= render "submissions/submissions", submissions: @submissions_last_week, header: "Last week", date: last_sunday_at_midnight %>
 
