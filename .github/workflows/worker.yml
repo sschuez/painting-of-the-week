@@ -1,14 +1,14 @@
-# name: BG Worker To Create A New Topic each Monday Morning
+name: BG Worker To Create A New Topic each Monday Morning
 
-# on:
-#   schedule:
-#     # Every Monday at 00:05 UTC
-#     - cron: '5 0 * * MON'
+on:
+  schedule:
+    # Every Monday at 00:05 UTC
+    - cron: '5 0 * * MON'
 
-# jobs:
-#   worker:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@master
-#       - name: Call server
-#         run: wget http://huehub.art/create_new_topic
+jobs:
+  worker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Call server
+        run: wget http://huehub.art/create_new_topic
