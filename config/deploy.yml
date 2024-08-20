@@ -1,0 +1,56 @@
+---
+service: art_margareti
+image: pschuez/art_margareti
+servers:
+  web:
+    hosts:
+      - 168.119.127.165
+    options:
+      "add-host": host.docker.internal:host-gateway
+    labels:
+      traefik.http.routers.hypohomes.entrypoints: websecure
+      traefik.http.routers.hypohomes.rule: "Host(`art.margareti.com`) || Host(`www.art.margareti.com`)"
+      traefik.http.routers.hypohomes.tls.certresolver: letsencrypt
+      traefik.http.routers.hypohomes.tls.domains[0].main: art.margareti.com
+      traefik.http.routers.hypohomes.tls.domains[0].sans: www.art.margareti.com
+  worker:
+    hosts:
+      - 168.119.127.165
+    cmd: bundle exec sidekiq
+registry:
+  username: pschuez
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+env:
+  clear:
+    DB_HOST: 168.119.127.165
+    POSTGRES_USER: art_margareti_user
+    POSTGRES_DB: art_margareti_production
+    redis: 168.119.127.165
+  secret:
+    - RAILS_MASTER_KEY
+    - POSTGRES_PASSWORD
+    - REDIS_URL
+ssh:
+  user: root
+accessories:
+  db:
+    image: postgres:16
+    host: 168.119.127.165
+    port: 5422:5432
+    env:
+      clear:
+        POSTGRES_USER: art_margareti_user
+        POSTGRES_DB: art_margareti_production
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - data:/var/lib/postgresql/data
+  redis:
+    image: redis:7.0
+    roles:
+      - web
+      - worker
+    port: 6388:6379
+    directories:
+      - data:/data
