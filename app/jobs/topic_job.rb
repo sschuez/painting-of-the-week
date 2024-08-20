@@ -9,7 +9,7 @@ class TopicJob < ApplicationJob
       puts "🔥 Created topic: #{@topic.body}"
     else
       logger.error topic.error_message
-      puts "🔥 Error ccreating topic: #{topic.error_message}"
+      puts "🔥 Error creating topic: #{topic.error_message}"
     end
   end
 end
